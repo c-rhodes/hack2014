@@ -30,19 +30,31 @@
     {% block angular %}
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     {% endblock %}
-
   </head>
 
   <body>
-
-    <div class="header navbar">
-      <div class="container">
-        <a class="navbar-brand" href="/">hack2014</a>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="{% url 'home' %}">Home</a></li>
+  <div class="header">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                   <i class="fa fa-bars"></i>
+               </button> 
+        </div>
+        <a class="navbar-brand" href="{% url 'home' %}">Good Will Hunting</a>
+        <ul class="nav nav-pills">
           <li><a href="{% url 'about' %}">About</a></li>
-
+          <li><a href="{% url 'category:category-list' %}">{% trans "Categories" %}</a></li>
           {% if request.user.is_authenticated %}
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Projects <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="{% url 'projects:project-list'  %}">{% trans "Projects" %}</a></li>
+                <li><a href="{% url 'projects:project-create'  %}">{% trans "Create Project" %}</a></li>
+              </ul>
+            </li>
             <li><a href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a></li>
             <li><a href="{% url 'account_logout' %}">{% trans "Logout" %}</a></li>
           {% else %}
@@ -51,10 +63,10 @@
           {% endif %}
         </ul>
       </div>
-    </div>
+  </div>
+</nav>
 
-    <div class="container">
-        
+    <div class="container">    
       {% if messages %}
           {% for message in messages %}
               <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
@@ -64,10 +76,10 @@
       {% block content %}
         <p>Use this document as a way to quick start any new project.</p>
       {% endblock content %}
-
     </div> <!-- /container -->
     
-    {% block modal %}{% endblock modal %}
+    {% block modal %}
+    {% endblock modal %}
 
     <!-- Le javascript
     ================================================== -->
@@ -86,4 +98,3 @@
     {% endblock javascript %}
   </body>
 </html>
- 
