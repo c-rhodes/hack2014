@@ -27,6 +27,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable avatars
     url(r'^avatar/', include('avatar.urls')),
-    url(r'^projects/', include('project.urls'), namespace='projects'),
+    url(r'^projects/', include('project.urls', namespace='projects')),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
