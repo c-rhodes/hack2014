@@ -80,5 +80,5 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
 
 class ProjectAddUserUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
-    form_class = ProjectCreateForm
+    fields = ['participants']
     template_name_suffix = '_add_user_form'
