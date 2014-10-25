@@ -4,6 +4,10 @@ from users.models import User
 
 
 class Category(models.Model):
+
+   class Meta:
+       verbose_name_plural = 'Categories'
+
    name = models.CharField(max_length=32, help_text='The name of the category') 
 
    def __str__(self):
