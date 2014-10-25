@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if error|length %}
+        {{ error }}
+    {% else %}
+        {% for hotel in hotels %}
+        <h2><a href="http://www.laterooms.com/en/hotel-reservations/{{ hotel.id }}.aspx">{{ hotel.name }}</a></h2>
+        <img class="img-responsive" src="{{ hotel.img }}" alt="{{ hotel.name}}">
+        {% endfor %}
+    {% endif %}
+{% endblock content %}
+
