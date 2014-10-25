@@ -13,20 +13,7 @@ from django.template.defaultfilters import slugify
 from braces.views import LoginRequiredMixin
 
 
-from project.models import Project, Category
-
-
-class CategoryList(ListView):
-    
-    model = Category
-    template_name = 'project/category_list.html'
-    context_object_name = 'categories'
-
-
-class CategoryDetail(DetailView):
-
-    model = Category
-    template_name = 'project/category_detail.html'
+from project.models import Project
 
 
 class ProjectView(DetailView):
