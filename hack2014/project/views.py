@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.views.generic import (DetailView,
-                                  ListView,)
+                                  ListView,
+                                  CreateView)
 
 from braces.views import LoginRequiredMixin
 
@@ -35,3 +36,11 @@ class ProjectListView(ListView):
     def get_queryset(self):
         queryset = Project.objects.filter(user__username=self.kwargs.get('user_id'))
         return queryset
+
+
+class ProjectCreateView(LoginRequiredMixin, CreateView):
+
+    model = Project
+    fields = ['name', 'category', 'description', 'date']
+
+
