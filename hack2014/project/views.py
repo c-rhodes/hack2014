@@ -28,9 +28,16 @@ class ProjectView(DetailView):
 
 
 class ProjectListView(ListView):
+    
+    model = Project
+    template_name = 'project/projects.html'
+    context_object_name = 'projects'
+
+
+class UserProjectListView(ListView):
 
     model = Project
-    template_name = 'project/list.html'
+    template_name = 'project/user_projects_list.html'
     context_object_name = 'projects'
 
     def get_queryset(self):
