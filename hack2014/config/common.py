@@ -43,6 +43,7 @@ class Common(Configuration):
         'allauth.account',  # registration
         'allauth.socialaccount',  # registration
         'django_extensions',
+        'datetimewidget',
     )
 
     # Apps specific for this project go here.
@@ -254,13 +255,27 @@ class Common(Configuration):
                 'level': 'ERROR',
                 'filters': ['require_debug_false'],
                 'class': 'django.utils.log.AdminEmailHandler'
-            }
+            },
+            'file': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': 'project.log',
+            },
         },
         'loggers': {
+            'django': {
+                'handlers': ['file'],
+                'propagate': True,
+                'level': 'DEBUG',
+            },
             'django.request': {
                 'handlers': ['mail_admins'],
                 'level': 'ERROR',
                 'propagate': True,
+            },
+            'training': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
             },
         }
     }
