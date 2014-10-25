@@ -19,7 +19,7 @@ from project.models import Project
 class ProjectView(DetailView):
     
     model = Project
-    template_name = 'project/detail.html'
+    template_name = 'project/project_detail.html'
 
     def get_context_data(self, **kwargs):        
         context = super(ProjectView, self).get_context_data(**kwargs)
