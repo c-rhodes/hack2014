@@ -1,10 +1,6 @@
 from django.contrib import admin
 
-from project.models import Category, Project
-
-
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+from project.models import Project
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -12,5 +8,4 @@ class ProjectAdmin(admin.ModelAdmin):
                     'description', 'date', 'date_posted')
 
 
-admin.site.register(Category, CategoryAdmin)
 admin.site.register(Project, ProjectAdmin)
