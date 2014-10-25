@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% if projects %}
+		{% for project in projects %}
+			<a href="{% url 'projects:project-detail' project.user.username project.slug %}">{{ project.name }}</a><br>
+		{% endfor %}
+	{% else %}
+		User has no projects
+	{% endif %}
+{% endblock content %}
