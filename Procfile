@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath="$PWD/hack2014" wsgi:application
