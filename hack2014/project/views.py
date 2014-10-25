@@ -14,7 +14,6 @@ from braces.views import LoginRequiredMixin
 
 
 from project.models import Project, Category
-from project.forms import ProjectCreateForm
 
 
 class CategoryList(ListView):
