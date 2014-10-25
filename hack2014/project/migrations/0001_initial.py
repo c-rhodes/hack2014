@@ -9,33 +9,22 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('category', '__first__'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Category',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
-                ('name', models.CharField(max_length=32, help_text='The name of the category')),
-                ('slug', models.SlugField(blank=True, null=True)),
-            ],
-            options={
-                'verbose_name_plural': 'Categories',
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
             name='Project',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID', auto_created=True)),
                 ('name', models.CharField(max_length=128, help_text='A short name identifying the project')),
                 ('description', models.TextField()),
                 ('slug', models.SlugField(blank=True, null=True)),
                 ('date', models.DateTimeField()),
                 ('date_posted', models.DateTimeField(auto_now_add=True)),
-                ('category', models.ManyToManyField(to='project.Category')),
-                ('participants', models.ManyToManyField(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='projects')),
+                ('category', models.ManyToManyField(to='category.Category')),
+                ('participants', models.ManyToManyField(to=settings.AUTH_USER_MODEL, blank=True, null=True)),
+                ('user', models.ForeignKey(related_name='projects', to=settings.AUTH_USER_MODEL)),
             ],
             options={
             },

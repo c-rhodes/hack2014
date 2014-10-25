@@ -13,9 +13,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
                 ('name', models.CharField(max_length=32, help_text='The name of the category')),
-                ('slug', models.SlugField(null=True, blank=True)),
+                ('slug', models.SlugField(blank=True, null=True)),
             ],
             options={
                 'verbose_name_plural': 'Categories',
