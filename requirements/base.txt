@@ -43,3 +43,5 @@ django_google_maps
 #leaflet
 django-leaflet==0.15.0
 
+#sexy forms
+django-bootstrap-form==3.1
