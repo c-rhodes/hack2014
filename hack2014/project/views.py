@@ -3,10 +3,13 @@ from django.http import (Http404,
                          HttpResponse,
                          HttpResponseRedirect,
                          HttpResponseBadRequest)
-from django.views.generic import (DetailView,
+
+from django.views.generic import (View,
+                                  DetailView,
                                   ListView,
                                   CreateView,
-                                  UpdateView)
+                                  UpdateView,
+                                  TemplateView)
 from django.core.urlresolvers import reverse_lazy
 from django.template.defaultfilters import slugify
 
@@ -65,7 +68,14 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
             kwargs={'user_id': self.request.user.username, 'slug': self.object.slug}))
 
 
-class ProjectAddUserUpdateView(LoginRequiredMixin, UpdateView):
-    model = Project
-    fields = ['participants']
-    template_name_suffix = '_add_user_form'
+class ProjectAddUserUpdateView(LoginRequiredMixin, View):
+    
+    def get(self, request, *args, **kwargs):
+        project = Project.objects.get(id=kwargs.get('project_id'))
+
+        if request.user != project.user or request.user in project.participants.all():
+            project.participants.add(request.user)
+            project.save()
+        else:
+            return HttpResponse(status=400) # bad request
+        return HttpResponseRedirect(reverse_lazy('projects:project-detail', kwargs={'user_id': project.user.username, 'slug': project.slug}))

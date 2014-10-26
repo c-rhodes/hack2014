@@ -2,5 +2,9 @@
 
 {% block content %}
 	<h2>{{ object.name }}</h2>
-	<p>{{ object.description }}
+	<p>{{ object.description }}<br>
+
+	{% if request.user != object.user and request.user not in object.participants.all %}
+		<a href="{% url 'projects:project-add-user' object.id %}">Participate</a>
+	{% endif %}
 {% endblock content %}
