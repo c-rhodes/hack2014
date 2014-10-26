@@ -58,7 +58,7 @@ class UserProjectListView(ListView):
 class UserParticipatingProjectListView(ListView):
 
     model = Project
-    template = 'project/participating_projects_list.html'
+    template_name = 'project/participating_projects_list.html'
     context_object_name = 'projects'
 
     def get_queryset(self):
