@@ -63,7 +63,8 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-        
+        form.save_m2m()
+
         return HttpResponseRedirect(reverse_lazy('projects:project-detail',
             kwargs={'user_id': self.request.user.username, 'slug': self.object.slug}))
 
