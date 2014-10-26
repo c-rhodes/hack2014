@@ -39,3 +39,7 @@ django-datetime-widget
 
 # Maps
 django_google_maps
+
+#leaflet
+django-leaflet==0.15.0
+

@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 	{% for category in categories %}
 		<a href="{% url 'category:category-detail' category.slug %}">{{ category.name }}</a>
 	{% endfor %}
+
 {% endblock content %}

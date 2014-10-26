@@ -1,1 +1,18 @@
 /* Our custom project CSS here. */
+a {
+	font-size: 1.5em;
+}
+
+.glyphicon {
+
+	height: 100px;
+	width: 100px;
+}
+
+.container-fluid {
+	padding-top: 25px;
+}
+
+.container {
+	padding-top: 100px;
+}

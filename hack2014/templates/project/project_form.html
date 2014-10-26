@@ -1,12 +1,28 @@
 {% extends 'base.html' %}
 
+<<<<<<< Updated upstream
 {% block content %}
 
 <br><br><br><br><br>
 <div class="container">
 	<form action="#" method="post">{% csrf_token %}
 	    {{ form.as_table }}
+=======
+
+{% block custom_js %}
+{{ form.media }}
+<script>
+	$("#id_date").datepicker();
+</script>
+
+{% endblock custom_js %}
+
+
+{% block content %}
+	<form action="#" method="post">
+		{% csrf_token %}
+	    {{ form.as_p }}
+>>>>>>> Stashed changes
 	    <input type="submit" value="Create" />
 	</form>
-</div>
 {% endblock content %}
