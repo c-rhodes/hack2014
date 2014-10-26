@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+	<h1> Projects in {{ category.name }} </h1>
+
 	{% if object.project_set.all %}
+	<div class="list-group">
 		{% for project in object.project_set.all %}
-			<a href="{% url 'projects:project-detail' project.user.username project.slug%}">{{ project.name }}</a><b>
+			<a class="list-group-item" href="{% url 'projects:project-detail' project.user.username project.slug%}">{{ project.name }}</a><b>
 		{% endfor %}
+	</div>
 	{% else %}
 		Sorry there are currently no projects in this category
 	{% endif %}

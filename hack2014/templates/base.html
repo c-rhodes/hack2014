@@ -52,7 +52,7 @@
                 Projects <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="{% url 'projects:project-list'  %}">{% trans " My Projects" %}</a></li>
+                <li><a href="{% url 'projects:user-project-list' user.username  %}">{% trans " My Projects" %}</a></li>
                 <li><a href="{% url 'projects:user-participating_project-list'  %}">{% trans "Projects I'm attending" %}</a></li>
                 <li><a href="{% url 'projects:project-create'  %}">{% trans "Create Project" %}</a></li>
               </ul>

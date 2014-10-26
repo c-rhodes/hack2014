@@ -2,17 +2,17 @@
 {% load bootstrap %}
 
 {% block content %}
-<<<<<<< Updated upstream
+
+<div class="jumbotron">
 <h1> Create a new project to share with others</h1>
+</div>
 </br>
 	<form action="#" method="post">{% csrf_token %}
 	    {{ form | bootstrap }}
 	    <input type="submit" value="Create" class="btn btn-success"/>
-=======
 	<form class="form-horizontal" role="form" action="#" method="post">
 		 {% csrf_token %}
 	     {{ form.as_p }}
 	    <input type="submit" value="Create" />
->>>>>>> Stashed changes
 	</form>
 {% endblock content %}

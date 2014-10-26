@@ -7,6 +7,7 @@
   <p><a href="{% url 'projects:project-create' %}" class="btn btn-success btn-lg" role="button">Create Project</a></p>
 </div>
 </br></br>
+<h2> Projects you have rumning</h2>
 <div class="list-group">
 	{% for project in projects %}
 		<a class="list-group-item" href="{% url 'projects:project-detail' project.user.username project.slug %}">{{ project.name }}</a><br>

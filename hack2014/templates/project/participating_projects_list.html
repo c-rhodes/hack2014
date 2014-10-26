@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h1> Projects I am taking part in: </h1>
+</br></br>
 	{% if projects %}
 	<div class="list-group">
 		{% for project in projects %}
-			<a class="list-group-item" href="{% url 'projects:project-detail' project.user.username project.slug %}">{{ project.name }}</a><br>
+			<a class="list-group-item" href="{% url 'projects:project-detail' project.user.username project.slug %}">{{ project.name }} - {{ project.description }}</a><br>
 		{% endfor %}
 	</div>
 	{% else %}

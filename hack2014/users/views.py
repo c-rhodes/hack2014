@@ -17,6 +17,10 @@ from .forms import UserForm
 # Import the customized User model
 from .models import User
 
+class UserToUserDetailView(LoginRequiredMixin, DetailView):
+    model = User
+    slug_field = "username"
+    template_name = "users/user_review.html"
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User

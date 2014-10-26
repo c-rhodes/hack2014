@@ -10,6 +10,6 @@ class ProjectCreateForm(forms.ModelForm):
     class Meta:
         model = Project
         fields=['name', 'category', 'description', 'date']
-        date = forms.DateTimeField(widget=DateTimeWidget(bootstrap_version=3))
+        date = forms.DateTimeField(widget=DateTimeWidget(attrs = {'id' : 'dateTime'}))
 
         

@@ -17,14 +17,13 @@
                 <h3>What is this project about?</h3>
                 <h4>{{ object.description }}</h4>
                 <h3> Who runs this event? </h3>
-                <h4> {{ object.user }} </h4>
+                <h4> <a href="{% url 'users:review' object.user %}"> {{ object.user }} </a></h4>
                 <h3> Location: </h3>
                 {% leaflet_map "project_location" callback="window.map_init_basic" %}
-                                        </div>
-
+                </div>
                 {% if request.user != object.user and request.user not in object.participants.all %}
-                </br></br>
-                <button class="btn btn-success btn-large" href="{% url 'projects:project-add-user' object.id %}">Participate!</button>
+                    </br></br>
+                    <button class="btn btn-success btn-large" href="{% url 'projects:project-add-user' object.id %}">Participate!</button>
                 {% endif %}
             </div>
             <div class="col-lg-3">

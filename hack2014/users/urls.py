@@ -28,4 +28,9 @@ urlpatterns = patterns('',
         view=views.UserUpdateView.as_view(),
         name='update'
     ),
+    url(
+        regex=r'^~review/(?P<slug>[\w.@+-]+)$',
+        view=views.UserToUserDetailView.as_view(),
+        name='review'
+    ),
 )
