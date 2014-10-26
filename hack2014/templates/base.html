@@ -45,7 +45,7 @@
        <nav class="navbar-inner navbar-fixed-top nabar-collapse" data-target=".navbar-collapse">
         <a class="navbar-brand navbar-right" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}"></img></a>
         <ul class="nav nav-pills">
-          <li><a href="{% url 'category:category-list' %}">{% trans "Categories" %}</a></li>
+          <li><a href="{% url 'category:category-list' %}">{% trans "Explore Categories" %}</a></li>
           {% if request.user.is_authenticated %}
           <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">

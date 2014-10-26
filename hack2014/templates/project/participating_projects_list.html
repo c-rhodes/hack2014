@@ -2,9 +2,11 @@
 
 {% block content %}
 	{% if projects %}
+	<div class="list-group">
 		{% for project in projects %}
-			<a href="{% url 'projects:project-detail' project.user.username project.slug %}">{{ project.name }}</a><br>
+			<a class="list-group-item" href="{% url 'projects:project-detail' project.user.username project.slug %}">{{ project.name }}</a><br>
 		{% endfor %}
+	</div>
 	{% else %}
 		You're currently not participating in any projects.
 	{% endif %}

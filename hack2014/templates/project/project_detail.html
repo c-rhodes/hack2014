@@ -12,13 +12,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-9">
-                <h2>{{ object.name }}</h2>
-                <p>{{ object.description }}<br>
-
+                <h1>{{ object.name }}</h1> 
+                <div class="panel panel-success">
+                <h3>What is this project about?</h3>
+                <h4>{{ object.description }}</h4>
+                <h3> Who runs this event? </h3>
+                <h4> {{ object.user }} </h4>
+                <h3> Location: </h3>
                 {% leaflet_map "project_location" callback="window.map_init_basic" %}
+                                        </div>
 
                 {% if request.user != object.user and request.user not in object.participants.all %}
-                <a href="{% url 'projects:project-add-user' object.id %}">Participate</a>
+                </br></br>
+                <button class="btn btn-success btn-large" href="{% url 'projects:project-add-user' object.id %}">Participate!</button>
                 {% endif %}
             </div>
             <div class="col-lg-3">
