@@ -1,4 +1,3 @@
-import requests
 from django.shortcuts import get_object_or_404
 from django.http import (Http404,
                          HttpResponse,
@@ -32,16 +31,6 @@ class ProjectView(DetailView):
     def get_object(self, queryset=None):
         obj = super(ProjectView, self).get_object()
 
-        if obj.latitude and obj.longitude:
-            url = 'https://sandbox.api.tlrg.io/v1/mobile/search/location/' + str(obj.latitude) + ',' + str(obj.longitude) + '/'
-            headers = {'API-Key': 'JufM0RVUtJT9ZU8HDAmOg4mGThA78qPn'}
-            r = requests.get(url, headers=headers)
-
-            if r.ok:
-                search_results = r.json()
-                hotels = search_results.get('results')[:3]
-                obj.hotels = hotels
-
         if obj.user.username != self.kwargs.get('user_id'):
             raise Http404
 
@@ -60,9 +49,20 @@ class UserProjectListView(ListView):
     model = Project
     template_name = 'project/user_projects_list.html'
     context_object_name = 'projects'
+
     def get_queryset(self):
         queryset = Project.objects.filter(user__username=self.kwargs.get('user_id'))
         return queryset
+
+
+class UserParticipatingProjectListView(ListView):
+
+    model = Project
+    template = 'project/participating_projects_list.html'
+    context_object_name = 'projects'
+
+    def get_queryset(self):
+        return self.request.user.project_set.all()
 
 
 class ProjectCreateView(LoginRequiredMixin, CreateView):
