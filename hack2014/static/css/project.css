@@ -1,6 +1,10 @@
 /* Our custom project CSS here. */
 a {
-	font-size: 1.5em;
+	font-size: 1.3em;
+	color:#142CA9;
+	line-height: 44px;
+	letter-spacing: -1px;
+	font-weight: bold;
 }
 
 .glyphicon {
@@ -15,4 +19,25 @@ a {
 
 .container {
 	padding-top: 100px;
+}
+
+.text-center {
+
+	text-align: center;
+	margin-top: 150px;
+	color: #444;
+	padding: 0px 0px 6px 0px;
+	font-size: 80px;
+	line-height: 44px;
+	letter-spacing: -1px;
+	font-weight: bold;
+	color: #142CA9;
+}
+
+.navbar-collapse.collapsing,   
+.navbar-collapse.in {
+
+    position: absolute; 
+    background-color: #000;
+
 }

@@ -4,8 +4,8 @@
 <h1> Categories we have events available for:</h1>
 <div class="list-group">
 	{% for category in categories %}
-		<a class="list-group-item" href="{% url 'category:category-detail' category.slug %}">{{ category.name }}</a>
-		<p class="list-group-item"> {{category.description}}</p>
+		<a class="list-group-item" href="{% url 'category:category-detail' category.slug %}">{{ category.name }} - {{category.description}}</a>
+		
 	{% endfor %}
 </div>
 

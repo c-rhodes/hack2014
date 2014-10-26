@@ -35,7 +35,6 @@
     {% endblock %}
   </head>
   <div class="header">
-      <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}"><h3>Open Space</h3></img></a>
       <div class="container-fluid">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
@@ -43,7 +42,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
       </button>
-       <nav class="navbar-inner navbar-static-top navbar-right" data-target=".navbar-collapse">
+       <nav class="navbar-inner navbar-fixed-top nabar-collapse" data-target=".navbar-collapse">
+        <a class="navbar-brand navbar-right" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}"></img></a>
         <ul class="nav nav-pills">
           <li><a href="{% url 'category:category-list' %}">{% trans "Categories" %}</a></li>
           {% if request.user.is_authenticated %}
@@ -53,6 +53,7 @@
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="{% url 'projects:project-list'  %}">{% trans " My Projects" %}</a></li>
+                <li><a href="{% url 'projects:user-participating_project-list'  %}">{% trans "Projects I'm attending" %}</a></li>
                 <li><a href="{% url 'projects:project-create'  %}">{% trans "Create Project" %}</a></li>
               </ul>
             </li>
@@ -64,7 +65,7 @@
           {% endif %}
         </ul>
       </div>
-      </div>
+    </div>
 </nav>
 
     <div class="container">    
