@@ -22,11 +22,15 @@
                 {% endif %}
             </div>
             <div class="col-lg-3">
+            {% if object.hotels %}
             <h2>Hotels nearby</h2>
             {% for hotel in object.hotels %}
-            <h3><a href="http://www.laterooms.com/en/hotel-reservations/{{ hotel.id }}.aspx">{{ hotel.name }}</a></h3>
+            <div class="thumbnail">
+                <p><a href="http://www.laterooms.com/en/hotel-reservations/{{ hotel.id }}.aspx">{{ hotel.name }}</a></p>
                 <img class="img-responsive" src="{{ hotel.img }}" alt="{{ hotel.name}}">
+            </div>
             {% endfor %}
+            {% endif %}
             </div>
         </div>
     </div>
