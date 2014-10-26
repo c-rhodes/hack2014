@@ -1,4 +1,6 @@
 {% load staticfiles i18n %}
+{% load leaflet_tags %}
+
 <!DOCTYPE html>
 <html lang="en" ng-app>
   <head>
@@ -30,6 +32,9 @@
     {% block angular %}
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     {% endblock %}
+
+    {% leaflet_js %}
+    {% leaflet_css %}
   </head>
   <div class="header">
     <nav class="navbar navbar-default navbar-static-top" data-target=".navbar-collapse" >

@@ -17,7 +17,6 @@ from braces.views import LoginRequiredMixin
 
 
 from project.models import Project
-from project.forms import ProjectCreateForm
 
 
 class ProjectView(DetailView):
@@ -58,7 +57,6 @@ class UserProjectListView(ListView):
 class ProjectCreateView(LoginRequiredMixin, CreateView):
 
     model = Project
-    form_class = ProjectCreateForm
     fields = ['name', 'category', 'description', 'date', 'address_first', 'address_second', 'address_third', 'city', 'postcode']
 
     def form_valid(self, form):

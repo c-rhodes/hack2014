@@ -44,6 +44,7 @@ class Common(Configuration):
         'allauth.socialaccount',  # registration
         'django_extensions',
         'datetimewidget',
+        'leaflet',
     )
 
     # Apps specific for this project go here.
@@ -283,3 +284,9 @@ class Common(Configuration):
     # END LOGGING CONFIGURATION
 
     # Your common stuff: Below this line define 3rd party library settings
+    LEAFLET_CONFIG = {
+        'DEFAULT_CENTER': (6.0, 45.0),
+        'DEFAULT_ZOOM': 16,
+        'MIN_ZOOM': 3,
+        'MAX_ZOOM': 18,
+    }

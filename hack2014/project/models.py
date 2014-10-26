@@ -1,9 +1,11 @@
+import json
+import requests
+
 from django.db import models
 from django.template.defaultfilters import slugify
 
 from users.models import User
 from category.models import Category
-import requests
 
 
 class Project(models.Model):

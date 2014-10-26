@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
+{% load leaflet_tags %}
 
 {% block content %}
+	<script type="text/javascript">
+	    function map_init_basic (map, options) {
+	        L.marker(["{{ object.latitude }}", "{{ object.longitude }}"]).addTo(map).bindPopup('{{ object.description }}')
+    .openPopup();;
+	    }
+	</script>
 	<h2>{{ object.name }}</h2>
 	<p>{{ object.description }}<br>
+
+	{% leaflet_map "project_location" callback="window.map_init_basic" %}
 
 	{% if request.user != object.user and request.user not in object.participants.all %}
 		<a href="{% url 'projects:project-add-user' object.id %}">Participate</a>
