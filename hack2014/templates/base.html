@@ -1,5 +1,6 @@
 {% load staticfiles i18n %}
 {% load leaflet_tags %}
+{% load bootstrap %}
 
 <!DOCTYPE html>
 <html lang="en" ng-app>
@@ -26,14 +27,12 @@
 
     <!-- This file store project specific CSS -->
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    {% leaflet_css %}
     {% endblock %}
 
     {% block angular %}
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     {% endblock %}
-
-    {% leaflet_js %}
-    {% leaflet_css %}
   </head>
   <div class="header">
       <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}"><h3>Open Space</h3></img></a>
@@ -46,7 +45,6 @@
       </button>
        <nav class="navbar-inner navbar-static-top navbar-right" data-target=".navbar-collapse">
         <ul class="nav nav-pills">
-          <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'category:category-list' %}">{% trans "Categories" %}</a></li>
           {% if request.user.is_authenticated %}
           <li class="dropdown">
@@ -54,7 +52,7 @@
                 Projects <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="{% url 'projects:project-list'  %}">{% trans "Projects" %}</a></li>
+                <li><a href="{% url 'projects:project-list'  %}">{% trans " My Projects" %}</a></li>
                 <li><a href="{% url 'projects:project-create'  %}">{% trans "Create Project" %}</a></li>
               </ul>
             </li>
@@ -98,6 +96,7 @@
 
       <!-- place project specific Javascript in this file -->
       <script src="{% static 'js/project.js' %}"></script>
+          {% leaflet_js %}
     {% endblock javascript %}
   </body>
 </html>

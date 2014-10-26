@@ -45,6 +45,7 @@ class Common(Configuration):
         'django_extensions',
         'datetimewidget',
         'leaflet',
+        'bootstrapform',
     )
 
     # Apps specific for this project go here.
