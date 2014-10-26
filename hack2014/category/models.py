@@ -9,6 +9,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     name = models.CharField(max_length=32, help_text='The name of the category')
+    description = models.CharField(max_length=125, help_text='The description of the categrory')
     slug = models.SlugField(null=True, blank=True)
 
     def save(self, *args, **kwargs):

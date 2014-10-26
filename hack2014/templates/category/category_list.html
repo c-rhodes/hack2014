@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<h1> Categories we have events available for:</h1>
+<div class="list-group">
 	{% for category in categories %}
-		<a href="{% url 'category:category-detail' category.slug %}">{{ category.name }}</a>
+		<a class="list-group-item" href="{% url 'category:category-detail' category.slug %}">{{ category.name }}</a>
+		<p class="list-group-item"> {{category.description}}</p>
 	{% endfor %}
+</div>
 
 {% endblock content %}
